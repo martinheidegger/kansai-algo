@@ -1,14 +1,13 @@
 {
   "name": "kansai-algo",
   "version": "1.0.0",
-  "description": "",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "start:large": "node list.js large > compiled.json",
     "start:small": "node list.js small > compiled_small.json",
     "start": "npm run start:small"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "Martin Heidegger",
+  "license": "MIT"
 }
