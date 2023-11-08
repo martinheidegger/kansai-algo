@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:large": "node list.js large > compiled.json",
+    "start:small": "node list.js small > compiled_small.json",
+    "start": "npm run start:small"
   },
   "keywords": [],
   "author": "",

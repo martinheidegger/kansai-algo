@@ -1,17 +1,18 @@
 const { readFileSync } = require('fs')
-const { uniquePermutations, allPermutations, validPermutations } = require('./permutation');
+const { uniquePermutations } = require('./permutation');
 const { addToLookup, addToLookupSet, countToLookup } = require('./lookup');
-const words10k = require('./words10k.json')
-const wordsAlpha = readFileSync('./words_alpha.txt', 'utf8').split(/\r\n/)
-const allWords = wordsAlpha
+
+const allWords = (process.argv[2] === 'large')
+  ? readFileSync('./words_alpha.txt', 'utf8').split(/\r\n/)
+  : require('./words10k.json')
 
 const PREFIX = { min: 1, max: 3 }
 const SUFFIX = { min: 2, max: 6 }
 const MIN_LEN = PREFIX.min + SUFFIX.min
 const MAX_LEN = PREFIX.max + SUFFIX.max
+
 const words = allWords
   .filter(word => word.length >= MIN_LEN && word.length <= MAX_LEN)
-console.log(words.length)
 
 const suffixesByPrefix = {}
 const suffixSetsByPrefix = {}
@@ -96,4 +97,3 @@ for (let [prefix, centerSuffixes] of Object.entries(suffixesByPrefix)) {
   }
 }
 console.log(']')
-
